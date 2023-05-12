@@ -5,12 +5,13 @@ namespace IEscola.Domain.Entities
 {
     public class Professor : EntityBase
     {
-        public Professor(int id, string nome, string cpf, DateTime? dataNascimento)
+        public Professor(int id, string nome, string cpf, DateTime? dataNascimento, char sexo)
         {
             Id = id;
             Nome = nome;
             Cpf = cpf;
-            DataNascimento = dataNascimento; 
+            DataNascimento = dataNascimento;
+            Sexo = Sexo;   
         }
 
         public string Nome { get; private set; }

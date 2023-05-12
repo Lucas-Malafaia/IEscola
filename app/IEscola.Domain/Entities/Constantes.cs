@@ -6,6 +6,7 @@ namespace IEscola.Domain.Entities
 {
     public static class Constantes
     {
-        public static string TratamentoProfessor = "Senhor";
+        public static string TratamentoMasculino = "Senhor";
+        public static string TratamentoFeminino = "Senhora";
     }
 }

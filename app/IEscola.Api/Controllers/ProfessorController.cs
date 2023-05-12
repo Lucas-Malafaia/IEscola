@@ -14,10 +14,10 @@ namespace IEscola.Api.Controllers
     public class ProfessorController : ControllerBase
     {
         private List<Professor> professorList = new List<Professor> {
-            new Professor(1, "Antonio", "01234567890", new DateTime(1990, 2, 27)),
-            new Professor(2, "José", "22222222222", new DateTime(1985, 2, 21)),
-            new Professor(3, "João", "11111111111", new DateTime(1983, 12, 31)),
-            new Professor(4, "Maria", "01234567800", new DateTime(1989, 3, 15))
+            new Professor(1, "Antonio", "01234567890", new DateTime(1990, 2, 27), 'M'),
+            new Professor(2, "José", "22222222222", new DateTime(1985, 2, 21),'M'),
+            new Professor(3, "João", "11111111111", new DateTime(1983, 12, 31),'M'),
+            new Professor(4, "Maria", "01234567800", new DateTime(1989, 3, 15), 'F')
         };
 
 
@@ -37,8 +37,15 @@ namespace IEscola.Api.Controllers
 
             var professor = professorList.FirstOrDefault(p => p.Id == id);
             if (professor != null)
-                professor.Tratamento = Constantes.TratamentoProfessor;
-
+                if (professor.Sexo == 'M')
+                {
+                    professor.Tratamento = Constantes.TratamentoMasculino;
+                }
+                else
+                {
+                    professor.Tratamento = Constantes.TratamentoFeminino;
+                }
+            
             return Ok(professor);
         }
 
@@ -46,8 +53,6 @@ namespace IEscola.Api.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Professor professor)
         {
-
-
             return Ok();
         }
 
